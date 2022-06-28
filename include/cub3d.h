@@ -1,23 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlen.c                                           :+:      :+:    :+:   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/27 18:25:12 by juhur             #+#    #+#             */
-/*   Updated: 2022/06/28 17:33:24 by juhur            ###   ########.fr       */
+/*   Created: 2022/06/28 11:25:16 by juhur             #+#    #+#             */
+/*   Updated: 2022/06/29 14:48:55 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "util.h"
+#ifndef CUB3D_H
+# define CUB3D_H
 
-size_t	_strlen(const char *s)
+# include <stdbool.h>
+
+typedef enum e_error
 {
-	const char	*e;
+	STATUS_OK,
+	STATUS_ERROR_ARG,
+	STATUS_ERROR_FILE_OPEN,
+	STATUS_ERROR_ALLOC,
+	STATUS_MAX
+}	t_error;
 
-	e = s;
-	while (*e != '\0')
-		++e;
-	return (e - s);
-}
+typedef struct s_game
+{
+	char	*map_raw_data;
+}	t_game;
+
+/*
+** init
+*/
+void	init(const char *file_name, t_game *g);
+
+/*
+** quit
+*/
+int		quit_program(t_error errno);
+
+#endif

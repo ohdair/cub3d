@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlen.c                                           :+:      :+:    :+:   */
+/*   strdup.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/27 18:25:12 by juhur             #+#    #+#             */
-/*   Updated: 2022/06/28 17:33:24 by juhur            ###   ########.fr       */
+/*   Created: 2022/06/28 19:02:32 by juhur             #+#    #+#             */
+/*   Updated: 2022/06/28 19:37:32 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "util.h"
 
-size_t	_strlen(const char *s)
+char	*_strdup(const char *s)
 {
-	const char	*e;
+	char	*new;
+	char	*ptr;
+	size_t	s_len;
 
-	e = s;
-	while (*e != '\0')
-		++e;
-	return (e - s);
+	if (s == NULL)
+		return (NULL);
+	s_len = _strlen(s);
+	new = _calloc(s_len + 1, sizeof(char));
+	ptr = new;
+	while (s_len--)
+		*(ptr++) = *(s++);
+	return (new);
 }

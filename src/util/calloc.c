@@ -1,23 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlen.c                                           :+:      :+:    :+:   */
+/*   calloc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/27 18:25:12 by juhur             #+#    #+#             */
-/*   Updated: 2022/06/28 17:33:24 by juhur            ###   ########.fr       */
+/*   Created: 2022/06/28 18:59:01 by juhur             #+#    #+#             */
+/*   Updated: 2022/06/28 19:03:36 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include "cub3d.h"
 #include "util.h"
 
-size_t	_strlen(const char *s)
+void	*_calloc(size_t count, size_t size)
 {
-	const char	*e;
+	void	*ret;
+	size_t	i;
 
-	e = s;
-	while (*e != '\0')
-		++e;
-	return (e - s);
+	if (count == 0 || size == 0)
+	{
+		count = 1;
+		size = 1;
+	}
+	ret = malloc(size * count);
+	if (ret == NULL)
+		quit_program(STATUS_ERROR_ALLOC);
+	i = 0;
+	while (i < count * size)
+	{
+		*(unsigned char *)(ret + i) = 0;
+		++i;
+	}
+	return (ret);
 }

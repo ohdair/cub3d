@@ -1,23 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlen.c                                           :+:      :+:    :+:   */
+/*   strlcat.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/27 18:25:12 by juhur             #+#    #+#             */
-/*   Updated: 2022/06/28 17:33:24 by juhur            ###   ########.fr       */
+/*   Created: 2022/06/28 19:06:08 by juhur             #+#    #+#             */
+/*   Updated: 2022/06/28 19:35:09 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "util.h"
 
-size_t	_strlen(const char *s)
+size_t	_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	const char	*e;
+	size_t	idx;
+	size_t	dst_len;
+	size_t	src_len;
 
-	e = s;
-	while (*e != '\0')
-		++e;
-	return (e - s);
+	dst_len = _strlen(dst);
+	src_len = _strlen((char *)src);
+	if (dst_len >= dstsize)
+		return (src_len + dstsize);
+	idx = 0;
+	while ((dst_len + idx < dstsize - 1)
+		&& (src[idx]))
+	{
+		dst[dst_len + idx] = src[idx];
+		++idx;
+	}
+	dst[dst_len + idx] = 0;
+	return (dst_len + src_len);
 }
