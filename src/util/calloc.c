@@ -6,13 +6,12 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 18:59:01 by juhur             #+#    #+#             */
-/*   Updated: 2022/06/28 19:03:36 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/01 14:15:08 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "cub3d.h"
-#include "util.h"
 
 void	*_calloc(size_t count, size_t size)
 {

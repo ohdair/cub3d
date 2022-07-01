@@ -6,7 +6,7 @@
 #    By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/27 18:12:47 by juhur             #+#    #+#              #
-#    Updated: 2022/06/29 14:52:51 by juhur            ###   ########.fr        #
+#    Updated: 2022/07/01 14:47:35 by juhur            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,8 @@ INC_DIR = ./include
 INIT_DIR = $(SRC_DIR)/init
 INIT_SRCS = $(addprefix $(INIT_DIR)/, \
 	init.c \
+	parse.c \
+	read.c \
 )
 
 QUIT_DIR = $(SRC_DIR)/quit
@@ -31,11 +33,15 @@ UTIL_DIR = $(SRC_DIR)/util
 UTIL_SRCS = $(addprefix $(UTIL_DIR)/, \
 	calloc.c \
 	free.c \
+	get_next_line.c \
+	list.c \
+	strchr.c \
 	strcmp.c \
 	strdup.c \
 	strexpand.c \
 	strlcat.c \
 	strlen.c \
+	strndup.c \
 )
 
 SRC_DIR = ./src

@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlen.c                                           :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/27 18:25:12 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/01 14:16:02 by juhur            ###   ########.fr       */
+/*   Created: 2022/07/01 14:16:21 by juhur             #+#    #+#             */
+/*   Updated: 2022/07/01 15:44:02 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "util.h"
+#include "cub3d.h"
 
-size_t	_strlen(const char *s)
+bool	parse_data(t_game *game, t_list *map_raw_data)
 {
-	const char	*e;
+	t_list	*cur;
 
-	e = s;
-	while (*e != '\0')
-		++e;
-	return (e - s);
+	(void)game;
+	cur = map_raw_data;
+	while (cur != NULL)
+		cur = cur->next;
+	return (true);
 }

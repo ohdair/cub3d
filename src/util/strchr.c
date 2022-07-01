@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlen.c                                           :+:      :+:    :+:   */
+/*   strchr.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/27 18:25:12 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/01 14:16:02 by juhur            ###   ########.fr       */
+/*   Created: 2022/07/01 13:26:07 by juhur             #+#    #+#             */
+/*   Updated: 2022/07/01 13:57:58 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "util.h"
 
-size_t	_strlen(const char *s)
+char	*_strchr(const char *s, int c)
 {
-	const char	*e;
-
-	e = s;
-	while (*e != '\0')
-		++e;
-	return (e - s);
+	while (*s != '\0')
+	{
+		if (*s == (char)c)
+			return ((char *)s);
+		++s;
+	}
+	if (*s == (char)c)
+		return ((char *)s);
+	return (NULL);
 }

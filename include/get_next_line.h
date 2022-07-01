@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlen.c                                           :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/27 18:25:12 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/01 14:16:02 by juhur            ###   ########.fr       */
+/*   Created: 2022/07/01 14:04:41 by juhur             #+#    #+#             */
+/*   Updated: 2022/07/01 14:05:15 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "util.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-size_t	_strlen(const char *s)
-{
-	const char	*e;
+# define BUFFER_SIZE	1000000
 
-	e = s;
-	while (*e != '\0')
-		++e;
-	return (e - s);
-}
+char	*get_next_line(int fd);
+
+#endif
