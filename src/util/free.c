@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 19:24:57 by juhur             #+#    #+#             */
-/*   Updated: 2022/06/28 19:25:17 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/02 12:28:20 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,16 @@ void	_free(void **target)
 		return ;
 	free(*target);
 	*target = NULL;
+}
+
+void	_free_double_pointer(void ***target)
+{
+	int	i;
+
+	if (target == NULL || *target == NULL)
+		return ;
+	i = -1;
+	while ((*target)[++i] != NULL)
+		_free((void **)&(*target)[i]);
+	_free((void **)&(*target));
 }

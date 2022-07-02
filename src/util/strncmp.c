@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   strncmp.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/01 14:16:21 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/01 15:44:02 by juhur            ###   ########.fr       */
+/*   Created: 2022/07/02 11:46:35 by juhur             #+#    #+#             */
+/*   Updated: 2022/07/02 13:07:13 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include <stddef.h>
 
-bool	parse_data(t_game *game, t_list *map_raw_data)
+int	_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_list	*cur;
-
-	(void)game;
-	cur = map_raw_data;
-	while (cur != NULL)
-		cur = cur->next;
-	return (true);
+	if (n == 0)
+		return (0);
+	while ((n-- > 1)
+		&& (*s1 == *s2)
+		&& (*s1 && *s2))
+	{
+		++s1;
+		++s2;
+	}
+	return (*(unsigned char *)s1 - *(unsigned char *)s2);
 }

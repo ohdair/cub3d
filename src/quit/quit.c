@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 19:00:32 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/01 15:01:15 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/03 12:37:59 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 #include <stdlib.h>
 #include "cub3d.h"
 
-int	quit_program(t_error err_no)
+int	quit_program(enum e_error err_no)
 {
 	const char	*error_msg[STATUS_MAX] = {
 		"",
 		"Error\n[usage]: ./cub3D <FILE_NAME.cub>\n",
 		"Error\n: Cannot file open\n",
-		"Error\n: Insufficient memory\n"
+		"Error\n: Insufficient memory\n",
 		"Error\n: Invalid map\n"
 	};
 

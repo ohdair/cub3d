@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 11:25:16 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/01 14:46:24 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/03 13:04:22 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdbool.h>
 # include "util.h"
 
-typedef enum e_error
+enum e_error
 {
 	STATUS_OK,
 	STATUS_ERROR_ARG,
@@ -24,48 +24,79 @@ typedef enum e_error
 	STATUS_ERROR_ALLOC,
 	STATUS_ERROR_INVALID_MAP,
 	STATUS_MAX
-}	t_error;
+};
 
-typedef struct s_image
+enum e_image
 {
-	void	*image;
+	NO = 0,
+	SO,
+	WE,
+	EA,
+	MAX_IMAGE
+};
+
+enum e_background_color
+{
+	CEILING = 0,
+	FLOOR,
+	MAX_BACKGROUND_COLOR
+};
+
+enum e_color
+{
+	RED = 0,
+	GREEN,
+	BLUE,
+	MAX_COLOR
+};
+
+struct s_image
+{
+	void	*img;
 	char	*path;
-	int		height;
+	int		h;
+	int		w;
+};
+
+struct s_background
+{
+	int		color[MAX_COLOR];
+};
+
+struct s_map
+{
+	char	**map;
 	int		width;
-}	t_image;
-
-typedef struct s_wall
-{
-	t_image	east;
-	t_image	west;
-	t_image	south;
-	t_image	north;
-}	t_wall;
-
-typedef struct s_background
-{
-	int		red;
-	int		green;
-	int		blue;
-}	t_background;
+	int		height;
+};
 
 typedef struct s_game
 {
-	t_wall			wall;
-	t_background	ceiling;
-	t_background	floor;
+	void				*mlx;
+	void				*win;
+	struct s_image		wall[MAX_IMAGE];
+	struct s_background	background[MAX_BACKGROUND_COLOR];
+	struct s_map		map;
 }	t_game;
 
 /*
 ** init
 */
-void	init(t_game *game, const char *file_name);
+void	init(t_game *game);
 bool	read_raw_data(t_list **map_raw_data, const char *file_name);
-bool	parse_data(t_game *game, t_list *map_raw_data);
+
+/*
+** parse
+*/
+bool	set_background(t_game *game, char *data);
+bool	check_map(struct s_map map);
+bool	set_image(t_game *game, char *data);
+void	set_map(struct s_map *map, t_list *list);
+void	parse(t_game *game, const char *file_name);
 
 /*
 ** quit
 */
-int		quit_program(t_error errno);
+int		quit_program(enum e_error err_no);
 
 #endif
