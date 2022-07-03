@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 16:45:33 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/03 17:33:01 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/03 19:55:34 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static bool	check_background_data_set(t_game *game)
 			return (false);
 	i = -1;
 	while (++i < MAX_BACKGROUND_COLOR)
-		if (game->background[i].color[RED] == -1)
+		if (game->background[i].rgb == -1)
 			return (false);
 	return (true);
 }

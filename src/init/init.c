@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:39:18 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/02 18:48:08 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/03 19:51:40 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void	init_mlx_struct(t_game *game)
 static void	init_game_struct(t_game *game)
 {
 	int	i;
-	int	j;
 
 	i = -1;
 	while (++i < MAX_IMAGE)
@@ -35,11 +34,7 @@ static void	init_game_struct(t_game *game)
 	}
 	i = -1;
 	while (++i < MAX_BACKGROUND_COLOR)
-	{
-		j = -1;
-		while (++j < MAX_COLOR)
-			game->background[i].color[j] = -1;
-	}
+		game->background[i].rgb = -1;
 }
 
 static void	init_map_struct(struct s_map *map)

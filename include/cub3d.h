@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 11:25:16 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/03 13:04:22 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/03 19:51:03 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include <stdbool.h>
 # include "util.h"
+
+# define WIDTH	960
+# define HEIGHT	640
 
 enum e_error
 {
@@ -60,7 +63,7 @@ struct s_image
 
 struct s_background
 {
-	int		color[MAX_COLOR];
+	int	rgb;
 };
 
 struct s_map
