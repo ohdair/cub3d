@@ -6,14 +6,13 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 20:35:36 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/03 17:32:07 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/03 19:44:27 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
 #include <unistd.h>
 #include "cub3d.h"
-#include "mlx.h"
 
 static void	check_path(char *path)
 {
