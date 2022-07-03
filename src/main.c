@@ -6,13 +6,11 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 18:17:30 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/03 16:09:52 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/02 16:51:15 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include "event.h"
-#include "mlx.h"
 
 static void	check_extension(int ac, char *file_name)
 {
@@ -30,10 +28,7 @@ int	main(int ac, char **av)
 	t_game	game;
 
 	check_extension(ac, av[1]);
-	init_game_struct(&game);
+	init(&game);
 	parse(&game, av[1]);
-	init_mlx(&game);
-	mlx_loop_hook(game.mlx.mlx, draw_window, &game);
-	mlx_hook(game.mlx.win, KEY_PRESS, 0, key_press, &game);
-	mlx_loop(game.mlx.mlx);
+	quit_program(STATUS_OK);
 }

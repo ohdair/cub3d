@@ -6,7 +6,7 @@
 #    By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/27 18:12:47 by juhur             #+#    #+#              #
-#    Updated: 2022/07/03 16:51:08 by juhur            ###   ########.fr        #
+#    Updated: 2022/07/02 20:39:58 by juhur            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME = cub3D
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+# CFLAGS = -g -fsanitize=address
 
 INC_DIR = ./include
 
@@ -21,12 +22,6 @@ MLX_DIR = ./mlx
 MLX_AR = $(MLX_DIR)/libmlx.a
 
 MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
-
-DRAW_DIR = $(SRC_DIR)/draw
-DRAW_SRCS = $(addprefix $(DRAW_DIR)/, \
-	window.c \
-	key_hook.c \
-)
 
 INIT_DIR = $(SRC_DIR)/init
 INIT_SRCS = $(addprefix $(INIT_DIR)/, \
@@ -72,7 +67,6 @@ ROOT_SRCS = $(addprefix $(SRC_DIR)/, \
 )
 
 SRCS = \
-	$(DRAW_SRCS) \
 	$(INIT_SRCS) \
 	$(PARSE_SRCS) \
 	$(QUIT_SRCS) \
