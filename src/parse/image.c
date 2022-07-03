@@ -6,18 +6,23 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 20:35:36 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/03 11:14:10 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/03 17:32:07 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <fcntl.h>
+#include <unistd.h>
 #include "cub3d.h"
 #include "mlx.h"
 
-static void	set_image_from_xpm(void *mlx, char *path, struct s_image *image)
+static void	check_path(char *path)
 {
-	image->img = mlx_xpm_file_to_image(mlx, path, &(image->w), &(image->h));
-	if (image->img == NULL)
+	int	fd;
+
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
 		quit_program(STATUS_ERROR_INVALID_MAP);
+	close(fd);
 }
 
 static char	*get_path(const char **ss)
@@ -56,7 +61,7 @@ bool	set_image(t_game *game, char *data)
 			if (game->wall[i].path != NULL)
 				quit_program(STATUS_ERROR_INVALID_MAP);
 			game->wall[i].path = get_path(ss);
-			set_image_from_xpm(game->mlx, game->wall[i].path, &game->wall[i]);
+			check_path(game->wall[i].path);
 			_free_double_pointer((void ***)&ss);
 			return (true);
 		}
