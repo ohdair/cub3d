@@ -3,35 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   background.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: jaewpark <jaewpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 20:39:10 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/03 21:01:38 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/03 21:11:09 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+static void	check_rgb(int red, int green, int blue)
+{
+	if (red < 0 || green < 0 || blue < 0)
+		quit_program(STATUS_ERROR_INVALID_MAP);
+	if (red > 255 || green > 255 || blue > 255)
+		quit_program(STATUS_ERROR_INVALID_MAP);
+}
+
+static int	create_rgb(int red, int green, int blue)
+{
+	check_rgb(red, green, blue);
+	return (red << 16 | green << 8 | blue);
+}
+
 static void	set_bg_color(struct s_background *background, char *color_data)
 {
 	const char	**ss = _split(color_data, ',');
 	int			color;
-	int			i;
 
 	color = 0;
 	while (ss[color] != NULL)
 		++color;
 	if (color != MAX_COLOR || background->rgb != -1)
 		quit_program(STATUS_ERROR_INVALID_MAP);
-	i = RED;
-	while (i < MAX_COLOR)
-	{
-		color = _atoi(ss[i]);
-		if (color < 0 || color > 255)
-			quit_program(STATUS_ERROR_INVALID_MAP);
-		background->rgb += color << (8 * (MAX_COLOR - 1 - i));
-		++i;
-	}
+	background->rgb = create_rgb(_atoi(ss[0]), _atoi(ss[1]), _atoi(ss[2]));
 	_free_double_pointer((void ***)&ss);
 }
 
