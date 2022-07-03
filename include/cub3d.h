@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 11:25:16 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/03 19:51:03 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/03 20:43:45 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,15 @@ typedef struct s_game
 }	t_game;
 
 /*
+** draw
+*/
+int		draw_window(t_game *game);
+
+/*
 ** init
 */
 void	init(t_game *game);
-bool	read_raw_data(t_list **map_raw_data, const char *file_name);
+void	init_mlx(t_game *game);
 
 /*
 ** parse
@@ -96,6 +101,7 @@ bool	check_map(struct s_map map);
 bool	set_image(t_game *game, char *data);
 void	set_map(struct s_map *map, t_list *list);
 void	parse(t_game *game, const char *file_name);
+bool	read_raw_data(t_list **map_raw_data, const char *file_name);
 
 /*
 ** quit

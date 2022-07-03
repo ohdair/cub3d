@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 20:39:10 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/03 19:59:56 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/03 21:01:38 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	set_bg_color(struct s_background *background, char *color_data)
 		color = _atoi(ss[i]);
 		if (color < 0 || color > 255)
 			quit_program(STATUS_ERROR_INVALID_MAP);
-		background->rgb += color << (8 * i);
+		background->rgb += color << (8 * (MAX_COLOR - 1 - i));
 		++i;
 	}
 	_free_double_pointer((void ***)&ss);

@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:39:18 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/03 19:51:40 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/03 20:03:39 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 static void	init_mlx_struct(t_game *game)
 {
-	game->mlx = mlx_init();
+	game->mlx = NULL;
 	game->win = NULL;
 }
 
