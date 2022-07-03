@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 11:25:16 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/03 13:04:22 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/03 16:49:25 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,17 @@
 # define CUB3D_H
 
 # include <stdbool.h>
+# include "event.h"
 # include "util.h"
+
+# define WIDTH	960
+# define HEIGHT	640
 
 enum e_error
 {
 	STATUS_OK,
 	STATUS_ERROR_ARG,
+	STATUS_ERROR_MLX_INIT,
 	STATUS_ERROR_FILE_OPEN,
 	STATUS_ERROR_ALLOC,
 	STATUS_ERROR_INVALID_MAP,
@@ -50,6 +55,17 @@ enum e_color
 	MAX_COLOR
 };
 
+struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_l;
+	int		end;
+};
+
 struct s_image
 {
 	void	*img;
@@ -72,8 +88,7 @@ struct s_map
 
 typedef struct s_game
 {
-	void				*mlx;
-	void				*win;
+	struct s_mlx		mlx;
 	struct s_image		wall[MAX_IMAGE];
 	struct s_background	background[MAX_BACKGROUND_COLOR];
 	struct s_map		map;
@@ -82,8 +97,14 @@ typedef struct s_game
 /*
 ** init
 */
-void	init(t_game *game);
-bool	read_raw_data(t_list **map_raw_data, const char *file_name);
+void	init_game_struct(t_game *game);
+void	init_mlx(t_game *game);
+
+/*
+** mlx
+*/
+int		key_press(int key, t_game *game);
+int		draw_window(t_game *game);
 
 /*
 ** parse
@@ -93,6 +114,7 @@ bool	check_map(struct s_map map);
 bool	set_image(t_game *game, char *data);
 void	set_map(struct s_map *map, t_list *list);
 void	parse(t_game *game, const char *file_name);
+bool	read_raw_data(t_list **map_raw_data, const char *file_name);
 
 /*
 ** quit

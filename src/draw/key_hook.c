@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quit.c                                             :+:      :+:    :+:   */
+/*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/28 19:00:32 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/03 16:50:23 by juhur            ###   ########.fr       */
+/*   Created: 2022/07/03 13:56:14 by juhur             #+#    #+#             */
+/*   Updated: 2022/07/03 16:07:54 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
 #include "cub3d.h"
+#include "event.h"
+#include "mlx.h"
 
-int	quit_program(enum e_error err_no)
+static void	key_esc(t_game *game)
 {
-	const char	*error_msg[STATUS_MAX] = {
-		"",
-		"Error\n[usage]: ./cub3D <FILE_NAME.cub>\n",
-		"Error\n: Fail to mlx_init()\n",
-		"Error\n: Cannot file open\n",
-		"Error\n: Insufficient memory\n",
-		"Error\n: Invalid map\n"
-	};
+	if (game->mlx.win && game->mlx.mlx)
+		mlx_destroy_window(game->mlx.mlx, game->mlx.win);
+	quit_program(STATUS_OK);
+}
 
-	if (err_no != STATUS_OK)
-	{
-		write(STDERR_FILENO, error_msg[err_no], _strlen(error_msg[err_no]));
-		exit(1);
-	}
-	exit(0);
+int	key_press(int key, t_game *game)
+{
+	if (key == KEY_ESC)
+		key_esc(game);
+	return (0);
 }
