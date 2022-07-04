@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jaewpark <jaewpark@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/27 18:12:47 by juhur             #+#    #+#              #
-#    Updated: 2022/07/04 15:52:58 by jaewpark         ###   ########.fr        #
+#    Updated: 2022/07/04 20:51:21 by juhur            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,6 +64,7 @@ UTIL_SRCS = $(addprefix $(UTIL_DIR)/, \
 	calloc.c \
 	free.c \
 	get_next_line.c \
+	isspace.c \
 	list.c \
 	split.c \
 	strchr.c \

@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 16:45:33 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 20:39:47 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/04 20:50:37 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	parse_data(t_game *g, t_list *map_raw_data)
 	cur = map_raw_data;
 	while (cur != NULL)
 	{
-		if (_strlen(cur->data) == 0)
+		if (_allisspace(cur->data))
 		{
 			cur = cur->next;
 			continue ;
