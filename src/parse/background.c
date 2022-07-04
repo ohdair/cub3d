@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   background.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaewpark <jaewpark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 20:39:10 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/03 21:11:09 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/07/04 12:52:45 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "cub3d.h"
 
@@ -40,7 +41,7 @@ static void	set_bg_color(struct s_background *background, char *color_data)
 	_free_double_pointer((void ***)&ss);
 }
 
-bool	set_background(t_game *game, char *data)
+bool	set_background(t_game *g, char *data)
 {
 	const char	*position[MAX_BACKGROUND_COLOR] = {"C", "F"};
 	const char	**ss = _split(data, ' ');
@@ -59,7 +60,7 @@ bool	set_background(t_game *game, char *data)
 			j = 0;
 			while (ss[++j] != NULL)
 				color_data = _strexpand(color_data, ss[j]);
-			set_bg_color(&game->background[i], color_data);
+			set_bg_color(&g->background[i], color_data);
 			_free_double_pointer((void ***)&ss);
 			return (true);
 		}

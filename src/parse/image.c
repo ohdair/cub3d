@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 20:35:36 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/03 19:44:27 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/04 12:51:05 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static char	*get_path(const char **ss)
 	return (path);
 }
 
-bool	set_image(t_game *game, char *data)
+bool	set_image(t_game *g, char *data)
 {
 	const char	*direction[MAX_IMAGE] = {"NO", "SO", "WE", "EA"};
 	const char	**ss = _split(data, ' ');
@@ -57,10 +57,10 @@ bool	set_image(t_game *game, char *data)
 			break ;
 		if (!_strcmp(ss[0], direction[i]))
 		{
-			if (game->wall[i].path != NULL)
+			if (g->wall[i].path != NULL)
 				quit_program(STATUS_ERROR_INVALID_MAP);
-			game->wall[i].path = get_path(ss);
-			check_path(game->wall[i].path);
+			g->wall[i].path = get_path(ss);
+			check_path(g->wall[i].path);
 			_free_double_pointer((void ***)&ss);
 			return (true);
 		}
