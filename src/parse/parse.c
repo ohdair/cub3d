@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 16:45:33 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 20:25:03 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/04 20:36:12 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,34 +51,47 @@ void	parse_data(t_game *g, t_list *map_raw_data)
 	}
 }
 
+static void	set_player_direction(t_game *g, char dir)
+{
+	if (dir == 'N')
+	{
+		g->player.dir.y = -1;
+		g->ray.plane.x = 0.66;
+	}
+	else if (dir == 'E')
+	{
+		g->player.dir.x = 1;
+		g->ray.plane.y = 0.66;
+	}
+	else if (dir == 'W')
+	{
+		g->player.dir.x = -1;
+		g->ray.plane.y = -0.66;
+	}
+	else if (dir == 'S')
+	{
+		g->player.dir.y = 1;
+		g->ray.plane.x = -0.66;
+	}
+}
+
 static void	set_player_position(t_game *g)
 {
-	for (int i = 0; i < g->map.height; i++) {
-		for (int j = 0; j < g->map.width; j++) {
-			if (_strchr("NEWS", g->map.map[i][j])) {
-				g->player.pos.x = j;
-				g->player.pos.y = i;
-				if (g->map.map[i][j] == 'N')
-				{
-					g->player.dir.y = -1;
-					g->ray.plane.x = 0.66;
-				}
-				else if (g->map.map[i][j] == 'S')
-				{
-					g->player.dir.y = 1;
-					g->ray.plane.x = -0.66;
-				}
-				else if (g->map.map[i][j] == 'W')
-				{
-					g->player.dir.x = -1;
-					g->ray.plane.y = -0.66;
-				}
-				else if (g->map.map[i][j] == 'E')
-				{
-					g->player.dir.x = 1;
-					g->ray.plane.y = 0.66;
-				}
-			}
+	int	y;
+	int	x;
+
+	y = -1;
+	while (++y < g->map.height)
+	{
+		x = -1;
+		while (++x < g->map.width)
+		{
+			if (!_strchr("NEWS", g->map.map[y][x]))
+				continue ;
+			g->player.pos.x = x;
+			g->player.pos.y = y;
+			set_player_direction(g, g->map.map[y][x]);
+			return ;
 		}
 	}
 }
