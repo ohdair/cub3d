@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaewpark <jaewpark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 11:25:16 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 19:04:08 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/07/04 19:41:47 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ void	init_mlx(t_game *g);
 ** parse
 */
 bool	set_background(t_game *g, char *data);
-bool	check_map(struct s_map map);
+bool	check_map(const char **map, int height, int width);
 bool	set_image(t_game *g, char *data);
 void	set_map(struct s_map *map, t_list *list);
 void	parse(t_game *g, const char *file_name);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaewpark <jaewpark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 16:45:33 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 19:10:10 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/07/04 20:00:52 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,6 @@ void	parse(t_game *g, const char *file_name)
 	if (!read_raw_data(&map_raw_data, file_name))
 		quit_program(STATUS_ERROR_FILE_OPEN);
 	parse_data(g, map_raw_data);
-	// check_map(g->map);
+	check_map((const char **)g->map.map, g->map.height, g->map.width);
 	set_player_position(g);
 }

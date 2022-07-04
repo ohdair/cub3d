@@ -6,26 +6,26 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:09:23 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/03 11:05:26 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/04 19:58:32 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+#include "check_map.h"
 
-static bool	check_player(struct s_map map)
+static bool	check_player(const char **map, int height, int width)
 {
 	bool	player;
-	int		i;
-	int		j;
+	t_coor	coor;
 
 	player = false;
-	i = -1;
-	while (++i < map.height)
+	coor.y = -1;
+	while (++coor.y < height)
 	{
-		j = -1;
-		while (++j < map.width)
+		coor.x = -1;
+		while (++coor.x < width)
 		{
-			if (_strchr("NEWS", map.map[i][j]) == NULL)
+			if (_strchr("NEWS", map[coor.y][coor.x]) == NULL)
 				continue ;
 			if (player)
 				return (false);
@@ -35,51 +35,55 @@ static bool	check_player(struct s_map map)
 	return (true);
 }
 
-static void	dfs(struct s_map *map, int y, int x)
+static void	dfs(const char **map, int height, int width, t_coor cur, bool **visited)
 {
 	const int	dy[4] = {-1, 0, 1, 0};
 	const int	dx[4] = {0, 1, 0, -1};
-	int			ny;
-	int			nx;
+	t_coor		next;
 	int			k;
 
-	if (y == 0 || x == 0 || y == map->height - 1 || x == map->width - 1)
+	if (cur.y == 0 || cur.x == 0 || cur.y == height - 1 || cur.x == width - 1)
 		quit_program(STATUS_ERROR_INVALID_MAP);
-	map->map[y][x] = '1';
+	visited[cur.y][cur.x] = true;
 	k = -1;
 	while (++k < 4)
 	{
-		ny = y + dy[k];
-		nx = x + dx[k];
-		if (ny < 0 || nx < 0 || ny >= map->height || nx >= map->width)
+		next.y = cur.y + dy[k];
+		next.x = cur.x + dx[k];
+		if (next.y < 0 || next.y < 0 || next.y >= height || next.x >= width)
 			continue ;
-		if (map->map[ny][nx] == '1')
+		if (map[next.y][next.x] == '1' || visited[next.y][next.x])
 			continue ;
-		if (map->map[ny][nx] == ' ')
+		if (map[next.y][next.x] == ' ')
 			quit_program(STATUS_ERROR_INVALID_MAP);
-		if (map->map[ny][nx] == '0')
-			dfs(map, ny, nx);
+		if (map[next.y][next.x] == '0')
+			dfs(map, height, width, next, visited);
 	}
 }
 
-bool	check_map(struct s_map map)
+bool	check_map(const char **map, int height, int width)
 {
-	int	i;
-	int	j;
+	t_coor	coor;
+	bool	**visited;
 
-	if (!check_player(map))
+	if (!check_player(map, height, width))
 		quit_program(STATUS_ERROR_INVALID_MAP);
-	i = -1;
-	while (++i < map.height)
+	visited = _calloc(height + 1, sizeof(bool *));
+	coor.y = -1;
+	while (++coor.y < height)
+		visited[coor.y] = _calloc(width + 1, sizeof(bool));
+	coor.y = -1;
+	while (++coor.y < height)
 	{
-		j = -1;
-		while (++j < map.width)
+		coor.x = -1;
+		while (++coor.x < width)
 		{
-			if (_strchr(" 01NEWS", map.map[i][j]) == NULL)
+			if (_strchr(" 01NEWS", map[coor.y][coor.x]) == NULL)
 				quit_program(STATUS_ERROR_INVALID_MAP);
-			else if (map.map[i][j] == '0')
-				dfs(&map, i, j);
+			else if (map[coor.y][coor.x] == '0' && !visited[coor.y][coor.x])
+				dfs(map, height, width, coor, visited);
 		}
 	}
+	_free_double_pointer((void ***)&visited);
 	return (true);
 }
