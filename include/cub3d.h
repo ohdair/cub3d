@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 11:25:16 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 12:51:24 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/04 13:45:00 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,14 @@ typedef struct s_game
 /*
 ** draw
 */
+void	destroy_window(t_game *g);
 int		draw_window(t_game *g);
+
+/*
+** event
+*/
+int		key_press(int key, t_game *g);
+int		mouse_hook(t_game *g);
 
 /*
 ** init

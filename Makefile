@@ -6,7 +6,7 @@
 #    By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/27 18:12:47 by juhur             #+#    #+#              #
-#    Updated: 2022/07/03 20:46:49 by juhur            ###   ########.fr        #
+#    Updated: 2022/07/04 13:48:59 by juhur            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,14 @@ MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 
 DRAW_DIR = $(SRC_DIR)/draw
 DRAW_SRCS = $(addprefix $(DRAW_DIR)/, \
+	destroy.c \
 	draw.c \
+)
+
+EVENT_DIR = $(SRC_DIR)/event
+EVENT_SRCS = $(addprefix $(EVENT_DIR)/, \
+	key_hook.c \
+	mouse_hook.c \
 )
 
 INIT_DIR = $(SRC_DIR)/init
@@ -73,6 +80,7 @@ ROOT_SRCS = $(addprefix $(SRC_DIR)/, \
 
 SRCS = \
 	$(DRAW_SRCS) \
+	$(EVENT_SRCS) \
 	$(INIT_SRCS) \
 	$(PARSE_SRCS) \
 	$(QUIT_SRCS) \
