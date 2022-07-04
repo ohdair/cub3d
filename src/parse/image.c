@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 20:35:36 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 12:51:05 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/04 20:39:40 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ static char	*get_path(const char **ss)
 
 bool	set_image(t_game *g, char *data)
 {
-	const char	*direction[MAX_IMAGE] = {"NO", "SO", "WE", "EA"};
+	const char	*direction[MAX_DIR] = {"NO", "SO", "WE", "EA"};
 	const char	**ss = _split(data, ' ');
 	int			i;
 
 	i = -1;
-	while (++i < MAX_IMAGE)
+	while (++i < MAX_DIR)
 	{
 		if (ss[0] == NULL)
 			break ;

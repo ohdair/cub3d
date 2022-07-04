@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:09:23 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 20:28:43 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/04 20:39:29 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ static bool	check_player(struct s_map *map)
 
 static void	dfs(struct s_map *map, t_coor cur, bool **visited)
 {
-	const int	dy[4] = {-1, 0, 1, 0};
-	const int	dx[4] = {0, 1, 0, -1};
+	const int	dy[MAX_DIR] = {-1, 1, 0, 0};
+	const int	dx[MAX_DIR] = {0, 0, -1, 1};
 	t_coor		next;
 	int			k;
 
@@ -48,7 +48,7 @@ static void	dfs(struct s_map *map, t_coor cur, bool **visited)
 		quit_program(STATUS_ERROR_INVALID_MAP);
 	visited[cur.y][cur.x] = true;
 	k = -1;
-	while (++k < 4)
+	while (++k < MAX_DIR)
 	{
 		next.y = cur.y + dy[k];
 		next.x = cur.x + dx[k];

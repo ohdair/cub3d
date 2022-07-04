@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 11:25:16 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 20:24:03 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/04 20:38:59 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ enum e_error
 	STATUS_MAX
 };
 
-enum e_image
+enum e_dir
 {
 	NO = 0,
 	SO,
 	WE,
 	EA,
-	MAX_IMAGE
+	MAX_DIR
 };
 
 enum e_background_color
@@ -127,7 +127,7 @@ typedef struct s_game
 	int					bpp;
 	int					line_l;
 	int					end;
-	struct s_image		wall[MAX_IMAGE];
+	struct s_image		wall[MAX_DIR];
 	struct s_background	background[MAX_BACKGROUND_COLOR];
 	struct s_map		map;
 	struct s_ray		ray;

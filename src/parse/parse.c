@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 16:45:33 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 20:36:12 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/04 20:39:47 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static bool	check_background_data_set(t_game *g)
 	int	i;
 
 	i = -1;
-	while (++i < MAX_IMAGE)
+	while (++i < MAX_DIR)
 		if (g->wall[i].path == NULL)
 			return (false);
 	i = -1;
