@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: jaewpark <jaewpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 16:45:33 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 12:51:13 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/04 17:58:12 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "util.h"
+#include <unistd.h>
 
 static bool	check_background_data_set(t_game *g)
 {
@@ -51,6 +52,38 @@ void	parse_data(t_game *g, t_list *map_raw_data)
 	}
 }
 
+static void	set_player_position(t_game *g)
+{
+	for (int i = 0; i < g->map.height; i++) {
+		for (int j = 0; j < g->map.width; j++) {
+			if (_strchr("NEWS", g->map.map[i][j])) {
+				g->player.pos.x = j;
+				g->player.pos.y = i;
+				if (g->map.map[i][j] == 'N')
+				{
+					g->player.dir.y = -1;
+					g->ray.plane.x = 0.66;
+				}
+				else if (g->map.map[i][j] == 'S')
+				{
+					g->player.dir.y = 1;
+					g->ray.plane.x = -0.66;
+				}
+				else if (g->map.map[i][j] == 'W')
+				{
+					g->player.dir.x = -1;
+					g->ray.plane.y = -0.66;
+				}
+				else if (g->map.map[i][j] == 'E')
+				{
+					g->player.dir.x = 1;
+					g->ray.plane.y = 0.66;
+				}
+			}
+		}
+	}
+}
+
 void	parse(t_game *g, const char *file_name)
 {
 	t_list	*map_raw_data;
@@ -58,5 +91,6 @@ void	parse(t_game *g, const char *file_name)
 	if (!read_raw_data(&map_raw_data, file_name))
 		quit_program(STATUS_ERROR_FILE_OPEN);
 	parse_data(g, map_raw_data);
-	check_map(g->map);
+	// check_map(g->map);
+	set_player_position(g);
 }

@@ -3,17 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+         #
+#    By: jaewpark <jaewpark@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/27 18:12:47 by juhur             #+#    #+#              #
-#    Updated: 2022/07/04 13:48:59 by juhur            ###   ########.fr        #
+#    Updated: 2022/07/04 15:52:58 by jaewpark         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 
 NAME = cub3D
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
 
 INC_DIR = ./include
 
@@ -25,7 +26,9 @@ MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 DRAW_DIR = $(SRC_DIR)/draw
 DRAW_SRCS = $(addprefix $(DRAW_DIR)/, \
 	destroy.c \
+	draw_raycasting.c \
 	draw.c \
+	texture.c \
 )
 
 EVENT_DIR = $(SRC_DIR)/event

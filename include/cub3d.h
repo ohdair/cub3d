@@ -3,21 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: jaewpark <jaewpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 11:25:16 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 13:45:00 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/04 16:20:07 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
 # include <stdbool.h>
+# include <math.h>
 # include "util.h"
 
 # define WIDTH	960
 # define HEIGHT	640
+# define WALLSIZE 64
 
 enum e_error
 {
@@ -61,6 +64,20 @@ struct s_image
 	int		w;
 };
 
+struct s_texture
+{
+	int		x;
+	int		y;
+	double	pos;
+	double	step;
+};
+
+typedef struct s_point
+{
+	double	x;
+	double	y;
+}			t_point;
+
 struct s_background
 {
 	int	rgb;
@@ -71,22 +88,62 @@ struct s_map
 	char	**map;
 	int		width;
 	int		height;
+	int		x;
+	int		y;
+	char	*north;
+	char	*south;
+	char	*east;
+	char	*west;
+};
+
+struct s_ray
+{
+	double	camera;
+	t_point	raydir;
+	t_point	plane;
+	t_point	dd;
+	t_point	sd;
+	int		step_x;
+	int		step_y;
+	int		hit;
+	int		side;
+	double	walldist;
+	int		height;
+	int		start;
+	int		end;
+};
+
+struct s_player
+{
+	t_point	pos;
+	t_point	dir;
 };
 
 typedef struct s_game
 {
 	void				*mlx;
 	void				*win;
+	void				*img;
+	char				*addr;
+	int					bpp;
+	int					line_l;
+	int					end;
 	struct s_image		wall[MAX_IMAGE];
 	struct s_background	background[MAX_BACKGROUND_COLOR];
 	struct s_map		map;
+	struct s_ray		ray;
+	struct s_player		player;
+	struct s_texture	tex;
 }	t_game;
 
 /*
 ** draw
 */
 void	destroy_window(t_game *g);
+void	draw_raycasting(t_game *game);
 int		draw_window(t_game *g);
+void	texture(t_game *g, int x);
+void	pixel_put(t_game *game, int x, int y, int color);
 
 /*
 ** event

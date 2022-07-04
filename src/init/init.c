@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: jaewpark <jaewpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:39:18 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 12:50:42 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/04 16:28:00 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@ static void	init_mlx_struct(t_game *g)
 {
 	g->mlx = NULL;
 	g->win = NULL;
+	g->img = NULL;
+	g->addr = NULL;
+	g->player.pos.x = 0;
+	g->player.pos.y = 0;
+	g->player.dir.x = 0;
+	g->player.dir.y = 0;
+	g->ray.plane.x = 0;
+	g->ray.plane.y = 0;
 }
 
 static void	init_game_struct(t_game *g)
