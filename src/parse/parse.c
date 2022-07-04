@@ -6,13 +6,12 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 16:45:33 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 20:00:52 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/04 20:25:03 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "util.h"
-#include <unistd.h>
 
 static bool	check_background_data_set(t_game *g)
 {
@@ -91,6 +90,6 @@ void	parse(t_game *g, const char *file_name)
 	if (!read_raw_data(&map_raw_data, file_name))
 		quit_program(STATUS_ERROR_FILE_OPEN);
 	parse_data(g, map_raw_data);
-	check_map((const char **)g->map.map, g->map.height, g->map.width);
+	check_map(&g->map);
 	set_player_position(g);
 }

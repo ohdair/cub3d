@@ -6,18 +6,38 @@
 /*   By: jaewpark <jaewpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 20:06:15 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 19:01:03 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/07/04 19:33:12 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "mlx.h"
 
-static void	draw_mini_map(t_game *game)
+static void	increase_map(t_game *game, int x, int y, int color)
 {
 	int	i;
 	int	j;
 
+	i = HEIGHT * 0.01 * y;
+	while (i < HEIGHT * 0.01 * (y + 1))
+	{
+		j = WIDTH * 0.01 * x;
+		while (j < WIDTH * 0.01 * (x + 1))
+		{
+			pixel_put(game, j + 5, i + 5, color);
+			j++;
+		}
+		i++;
+	}
+}
+
+static void	draw_mini_map(t_game *game)
+{
+	int		i;
+	int		j;
+	t_point	player;
+
+	player = game->player.pos;
 	i = -1;
 	while (++i < game->map.height)
 	{
@@ -25,10 +45,10 @@ static void	draw_mini_map(t_game *game)
 		while (++j < game->map.width)
 		{
 			if (game->map.map[i][j] == '1')
-				pixel_put(game, j + 5, i + 5, 0x80EEEEEE);
+				increase_map(game, j, i, 0x80EEEEEE);
 		}
 	}
-	pixel_put(game, game->player.pos.y + 5, game->player.pos.x + 5, 0xEE2500);
+	increase_map(game, player.y, player.x, 0xEE2500);
 }
 
 void	pixel_put(t_game *game, int x, int y, int color)
