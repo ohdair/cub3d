@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 11:25:16 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/03 20:43:45 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/04 12:51:24 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,22 +85,22 @@ typedef struct s_game
 /*
 ** draw
 */
-int		draw_window(t_game *game);
+int		draw_window(t_game *g);
 
 /*
 ** init
 */
-void	init(t_game *game);
-void	init_mlx(t_game *game);
+void	init(t_game *g);
+void	init_mlx(t_game *g);
 
 /*
 ** parse
 */
-bool	set_background(t_game *game, char *data);
+bool	set_background(t_game *g, char *data);
 bool	check_map(struct s_map map);
-bool	set_image(t_game *game, char *data);
+bool	set_image(t_game *g, char *data);
 void	set_map(struct s_map *map, t_list *list);
-void	parse(t_game *game, const char *file_name);
+void	parse(t_game *g, const char *file_name);
 bool	read_raw_data(t_list **map_raw_data, const char *file_name);
 
 /*
