@@ -6,14 +6,13 @@
 /*   By: jaewpark <jaewpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 20:03:52 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 17:29:59 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/07/04 19:07:39 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "mlx.h"
 
-#include <stdio.h>
 static void	*texture_xpm(t_game *g, char *path)
 {
 	int		i;
@@ -22,19 +21,11 @@ static void	*texture_xpm(t_game *g, char *path)
 	void	*img;
 	char	*adr;
 
-	i = 0;
-	while (path[i] == ' ' || path[i] == '\t')
-		i++;
-	if (path[i] == '.' || path[i] == '/')
-	{
-		img = mlx_xpm_file_to_image(g->mlx, path + i, &x, &y);
-		if (img == NULL || x != 64 || y != 64)
-			quit_program(STATUS_ERROR_INVALID_MAP);
-		adr = mlx_get_data_addr(img, &x, &y, &i);
-		return (adr);
-	}
-	quit_program(STATUS_ERROR_INVALID_MAP);
-	return (NULL);
+	img = mlx_xpm_file_to_image(g->mlx, path, &x, &y);
+	if (img == NULL || x != WALLSIZE || y != WALLSIZE)
+		quit_program(STATUS_ERROR_INVALID_MAP);
+	adr = mlx_get_data_addr(img, &x, &y, &i);
+	return (adr);
 }
 
 void	init_mlx(t_game *g)

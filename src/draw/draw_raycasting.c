@@ -6,29 +6,12 @@
 /*   By: jaewpark <jaewpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 13:21:19 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/07/04 17:49:27 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/07/04 19:03:25 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "cub3d.h"
-#include <stdio.h>
-
-/*
-** 필요 데이터
-** player	: 1. position (X, Y) 2. direction (X, Y)
-** camera	: cameraX, x-coordinate in camera space
-** 		(left of screen = -1, center of screen = 0, right of screen = 1)
-** plane	: the 2d raycaster version of camera plane (X, Y)
-** 		(the player's camera plane)
-** hit		: check if Rays collides with the wall
-** step	: Depending on the direction of the Rays, the information is stored in stepX, stepY as +1 or -1
-** sideDist	: The distance of the Rays from the starting point to the point where it meets the first x(y)-axis (X, Y)
-** deltaDist	: This is the travel distance of the ray when it's increased by 1 on the first x(y)-axis. (X, Y)
-** * perWallDist		:  Calculate distance projected on camera direction
-** rayDirection	: X, Y (rayDirX(Y) = directionX(Y) + planeX(Y) * cameraX)
-** DDA algorithm	: Depending on the direction of the Rays, the information is stored in stepX, stepY as +1 or -1
-*/
 
 static void	calculations(t_game *g)
 {

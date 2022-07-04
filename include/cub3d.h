@@ -6,10 +6,9 @@
 /*   By: jaewpark <jaewpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 11:25:16 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 16:20:07 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/07/04 19:04:08 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef CUB3D_H
 # define CUB3D_H

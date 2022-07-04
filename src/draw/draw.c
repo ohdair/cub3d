@@ -6,12 +6,30 @@
 /*   By: jaewpark <jaewpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 20:06:15 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 18:00:53 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/07/04 19:01:03 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "mlx.h"
+
+static void	draw_mini_map(t_game *game)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < game->map.height)
+	{
+		j = -1;
+		while (++j < game->map.width)
+		{
+			if (game->map.map[i][j] == '1')
+				pixel_put(game, j + 5, i + 5, 0x80EEEEEE);
+		}
+	}
+	pixel_put(game, game->player.pos.y + 5, game->player.pos.x + 5, 0xEE2500);
+}
 
 void	pixel_put(t_game *game, int x, int y, int color)
 {
@@ -46,7 +64,7 @@ int	draw_window(t_game *g)
 {
 	draw_background(g);
 	draw_raycasting(g);
-	// draw_mini_map(g);
+	draw_mini_map(g);
 	mlx_put_image_to_window(g->mlx, g->win, g->img, 0, 0);
 	return (1);
 }

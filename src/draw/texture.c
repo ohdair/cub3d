@@ -6,21 +6,12 @@
 /*   By: jaewpark <jaewpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 13:21:15 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/07/04 16:26:42 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/07/04 19:09:03 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 #include "mlx.h"
-#include <stdio.h>
-
-/*
-** 필요 지식
-** wall_x		: Mark exactly where you hit the wall in double-type coordinates, not int-type coordinates.
-** tex.x		: the x-coordinates of the texture
-** tex.step	: Determine how much the coordinates of the texture should be increased to the coordinates on the vertical line
-** tex.pos		: The area to draw in texture
-*/
 
 static void	pre_processing(t_game *g)
 {
@@ -46,16 +37,20 @@ static int	texturing(t_game *g, unsigned int *color)
 	if (g->ray.side == 0)
 	{
 		if (g->ray.raydir.x >= 0)
-			*color = ((unsigned int *)(g->map.east))[64 * g->tex.y + g->tex.x];
+			*color = ((unsigned int *)(g->map.east)) \
+			[WALLSIZE * g->tex.y + g->tex.x];
 		else
-			*color = ((unsigned int *)(g->map.west))[64 * g->tex.y + g->tex.x];
+			*color = ((unsigned int *)(g->map.west)) \
+			[WALLSIZE * g->tex.y + g->tex.x];
 	}
 	else if (g->ray.side == 1)
 	{
 		if (g->ray.raydir.y >= 0)
-			*color = ((unsigned int *)(g->map.south))[64 * g->tex.y + g->tex.x];
+			*color = ((unsigned int *)(g->map.south)) \
+			[WALLSIZE * g->tex.y + g->tex.x];
 		else
-			*color = ((unsigned int *)(g->map.north))[64 * g->tex.y + g->tex.x];
+			*color = ((unsigned int *)(g->map.north)) \
+			[WALLSIZE * g->tex.y + g->tex.x];
 	}
 	return (*color);
 }
