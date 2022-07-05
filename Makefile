@@ -6,7 +6,7 @@
 #    By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/27 18:12:47 by juhur             #+#    #+#              #
-#    Updated: 2022/07/04 20:51:21 by juhur            ###   ########.fr        #
+#    Updated: 2022/07/06 08:32:56 by juhur            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ EVENT_DIR = $(SRC_DIR)/event
 EVENT_SRCS = $(addprefix $(EVENT_DIR)/, \
 	key_hook.c \
 	mouse_hook.c \
+	move.c \
 )
 
 INIT_DIR = $(SRC_DIR)/init

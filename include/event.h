@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 13:03:56 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 13:24:20 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/06 08:31:43 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ enum e_macos_key_code
 	KEY_LEFT = 123,
 	KEY_RIGHT,
 	MAX_KEY
+};
+
+struct s_coor
+{
+	int	y;
+	int	x;
 };
 
 #endif

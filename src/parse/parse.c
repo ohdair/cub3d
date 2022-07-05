@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 16:45:33 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 20:50:37 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/05 16:00:51 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ static void	set_player_position(t_game *g)
 			g->player.pos.x = x;
 			g->player.pos.y = y;
 			set_player_direction(g, g->map.map[y][x]);
+			g->map.map[y][x] = '0';
 			return ;
 		}
 	}

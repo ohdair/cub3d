@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 11:25:16 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 20:38:59 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/05 16:47:04 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # define WIDTH	960
 # define HEIGHT	640
 # define WALLSIZE 64
+# define SM 0.1
+# define SR 0.05
 
 enum e_error
 {
@@ -149,6 +151,7 @@ void	pixel_put(t_game *game, int x, int y, int color);
 */
 int		key_press(int key, t_game *g);
 int		mouse_hook(t_game *g);
+void	move(int key, t_game *g);
 
 /*
 ** init
