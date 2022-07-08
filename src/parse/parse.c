@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 16:45:33 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/06 13:28:03 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/08 13:06:21 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ static void	set_player_position(t_game *g)
 		{
 			if (!_strchr("NEWS", g->map.map[y][x]))
 				continue ;
-			g->player.pos.x = x;
-			g->player.pos.y = y;
+			g->player.pos.x = (double)x + 0.01;
+			g->player.pos.y = (double)y + 0.01;
 			set_player_direction(g, g->map.map[y][x]);
 			g->map.map[y][x] = '0';
 			return ;
