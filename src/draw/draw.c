@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaewpark <jaewpark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 20:06:15 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 19:33:12 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/07/08 09:54:52 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	draw_mini_map(t_game *game)
 				increase_map(game, j, i, 0x80EEEEEE);
 		}
 	}
-	increase_map(game, player.y, player.x, 0xEE2500);
+	increase_map(game, player.x, player.y, 0xEE2500);
 }
 
 void	pixel_put(t_game *game, int x, int y, int color)
