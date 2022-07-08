@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 16:45:33 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/05 16:00:51 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/06 13:28:03 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,27 +51,22 @@ void	parse_data(t_game *g, t_list *map_raw_data)
 	}
 }
 
-static void	set_player_direction(t_game *g, char dir)
+static void	set_player_direction(t_game *g, char dir_char)
 {
-	if (dir == 'N')
+	const char		dir_chars[MAX_DIR] = {'N', 'S', 'W', 'E'};
+	const t_point	dir[MAX_DIR] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+	const t_point	plane[MAX_DIR] = {
+	{0, 0.66}, {0, -0.66}, {-0.66, 0}, {0.66, 0}};
+	int				i;
+
+	i = -1;
+	while (++i < MAX_DIR)
 	{
-		g->player.dir.y = -1;
-		g->ray.plane.x = 0.66;
-	}
-	else if (dir == 'E')
-	{
-		g->player.dir.x = 1;
-		g->ray.plane.y = 0.66;
-	}
-	else if (dir == 'W')
-	{
-		g->player.dir.x = -1;
-		g->ray.plane.y = -0.66;
-	}
-	else if (dir == 'S')
-	{
-		g->player.dir.y = 1;
-		g->ray.plane.x = -0.66;
+		if (dir_char == dir_chars[i])
+		{
+			g->player.dir = dir[i];
+			g->ray.plane = plane[i];
+		}
 	}
 }
 

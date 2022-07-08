@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 11:25:16 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/05 16:47:04 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/06 13:30:14 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,8 @@ struct s_texture
 
 typedef struct s_point
 {
-	double	x;
 	double	y;
+	double	x;
 }			t_point;
 
 struct s_background
