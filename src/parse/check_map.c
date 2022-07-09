@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
+/*   By: jaewpark <jaewpark@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:09:23 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/09 15:15:32 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/09 15:30:56 by jaewpark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,7 @@ bool	check_map(struct s_map *map)
 		}
 	}
 	_free_double_pointer((void ***)&visited);
+	if (map->height < 3 || map->width < 3)
+		quit_program(STATUS_ERROR_INVALID_MAP);
 	return (true);
 }
