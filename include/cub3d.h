@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 11:25:16 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/06 13:30:14 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/09 13:55:31 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # define WIDTH	960
 # define HEIGHT	640
 # define WALLSIZE 64
-# define SM 0.1
-# define SR 0.05
+# define MOVE_UNIT 0.1
+# define ROTATE_UNIT 0.1
 
 enum e_error
 {

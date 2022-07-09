@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 13:01:59 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/05 17:15:38 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/09 13:53:05 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ static void	key_hook_lr(int key, struct s_point *dir, struct s_point *plane)
 {
 	if (key == KEY_LEFT)
 	{
-		dir->y = dir->x * sin(-SR) + dir->y * cos(-SR);
-		dir->x = dir->x * cos(-SR) - dir->y * sin(-SR);
-		plane->y = plane->x * sin(-SR) + plane->y * cos(-SR);
-		plane->x = plane->x * cos(-SR) - plane->y * sin(-SR);
+		dir->y = dir->x * sin(-ROTATE_UNIT) + dir->y * cos(-ROTATE_UNIT);
+		dir->x = dir->x * cos(-ROTATE_UNIT) - dir->y * sin(-ROTATE_UNIT);
+		plane->y = plane->x * sin(-ROTATE_UNIT) + plane->y * cos(-ROTATE_UNIT);
+		plane->x = plane->x * cos(-ROTATE_UNIT) - plane->y * sin(-ROTATE_UNIT);
 	}
 	if (key == KEY_RIGHT)
 	{
-		dir->y = dir->x * sin(SR) + dir->y * cos(SR);
-		dir->x = dir->x * cos(SR) - dir->y * sin(SR);
-		plane->y = plane->x * sin(SR) + plane->y * cos(SR);
-		plane->x = plane->x * cos(SR) - plane->y * sin(SR);
+		dir->y = dir->x * sin(ROTATE_UNIT) + dir->y * cos(ROTATE_UNIT);
+		dir->x = dir->x * cos(ROTATE_UNIT) - dir->y * sin(ROTATE_UNIT);
+		plane->y = plane->x * sin(ROTATE_UNIT) + plane->y * cos(ROTATE_UNIT);
+		plane->x = plane->x * cos(ROTATE_UNIT) - plane->y * sin(ROTATE_UNIT);
 	}
 }
 
