@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 20:39:10 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/09 15:08:44 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/09 15:24:54 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,22 @@ static void	set_bg_color(struct s_background *background, char *color_data)
 	_free_double_pointer((void ***)&ss);
 }
 
+static bool	check_comma(char *s)
+{
+	const size_t	s_len = _strlen(s);
+	size_t			i;
+
+	i = 0;
+	while (i < s_len - 1)
+	{
+		if (!_strncmp(s, ",,", 2))
+			return (false);
+		++i;
+		++s;
+	}
+	return (true);
+}
+
 bool	set_background(t_game *g, char *data)
 {
 	const char	*position[MAX_BACKGROUND_COLOR] = {"C", "F"};
@@ -57,7 +73,7 @@ bool	set_background(t_game *g, char *data)
 			j = 0;
 			while (ss[++j] != NULL)
 				color_data = _strexpand(color_data, ss[j]);
-			if (color_data == NULL)
+			if (color_data == NULL || !check_comma(color_data))
 				quit_program(STATUS_ERROR_INVALID_MAP);
 			set_bg_color(&g->background[i], color_data);
 			_free_double_pointer((void ***)&ss);
