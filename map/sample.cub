@@ -1,7 +1,7 @@
-NO ./image/WALL2.xpm
-SO ./image/WALL21.xpm
-WE ./image/WALL8.xpm
-EA ./image/WALL22.xpm
+NO ./images/WALL2.xpm
+SO ./images/WALL21.xpm
+WE ./images/WALL8.xpm
+EA ./images/WALL22.xpm
 
 F 112,112,112
 C 53,53,53
