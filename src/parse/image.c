@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 20:35:36 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 20:39:40 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/09 15:02:58 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ bool	set_image(t_game *g, char *data)
 			if (g->wall[i].path != NULL)
 				quit_program(STATUS_ERROR_INVALID_MAP);
 			g->wall[i].path = get_path(ss);
+			if (g->wall[i].path == NULL)
+				quit_program(STATUS_ERROR_INVALID_MAP);
 			check_path(g->wall[i].path);
 			_free_double_pointer((void ***)&ss);
 			return (true);

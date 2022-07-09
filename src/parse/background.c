@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 20:39:10 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 13:47:15 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/09 15:08:44 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ bool	set_background(t_game *g, char *data)
 	i = -1;
 	while (++i < MAX_BACKGROUND_COLOR)
 	{
-		if (ss[0] == NULL)
-			break ;
 		if (!_strcmp(ss[0], position[i]))
 		{
 			j = 0;
 			while (ss[++j] != NULL)
 				color_data = _strexpand(color_data, ss[j]);
+			if (color_data == NULL)
+				quit_program(STATUS_ERROR_INVALID_MAP);
 			set_bg_color(&g->background[i], color_data);
 			_free_double_pointer((void ***)&ss);
 			return (true);
