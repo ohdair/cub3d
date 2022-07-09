@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 16:45:33 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/08 13:06:21 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/09 17:33:58 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,5 @@ void	parse(t_game *g, const char *file_name)
 	parse_data(g, map_raw_data);
 	check_map(&g->map);
 	set_player_position(g);
+	remove_all_list(&map_raw_data);
 }
