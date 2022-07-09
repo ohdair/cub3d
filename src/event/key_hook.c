@@ -6,10 +6,11 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 13:01:59 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/09 13:53:05 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/09 14:16:22 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include "cub3d.h"
 #include "event.h"
 
