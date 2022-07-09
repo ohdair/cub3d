@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 19:09:23 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 20:39:29 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/09 15:15:32 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static bool	check_player(struct s_map *map)
 			player = true;
 		}
 	}
+	if (!player)
+		return (false);
 	return (true);
 }
 
