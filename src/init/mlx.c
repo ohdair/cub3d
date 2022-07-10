@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaewpark <jaewpark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 20:03:52 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 19:07:39 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/07/04 20:39:14 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	init_mlx(t_game *g)
 
 	g->mlx = mlx_init();
 	i = -1;
-	while (++i < MAX_IMAGE)
+	while (++i < MAX_DIR)
 	{
 		if (i == NO)
 			g->map.north = texture_xpm(g, g->wall[i].path);

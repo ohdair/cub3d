@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jaewpark <jaewpark@student.42seoul.kr>     +#+  +:+       +#+         #
+#    By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/27 18:12:47 by juhur             #+#    #+#              #
-#    Updated: 2022/07/04 15:52:58 by jaewpark         ###   ########.fr        #
+#    Updated: 2022/07/09 14:18:39 by juhur            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME = cub3D
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror
 
 INC_DIR = ./include
 
@@ -35,6 +35,7 @@ EVENT_DIR = $(SRC_DIR)/event
 EVENT_SRCS = $(addprefix $(EVENT_DIR)/, \
 	key_hook.c \
 	mouse_hook.c \
+	move.c \
 )
 
 INIT_DIR = $(SRC_DIR)/init
@@ -64,6 +65,7 @@ UTIL_SRCS = $(addprefix $(UTIL_DIR)/, \
 	calloc.c \
 	free.c \
 	get_next_line.c \
+	isspace.c \
 	list.c \
 	split.c \
 	strchr.c \

@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 13:36:40 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/01 14:01:19 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/09 17:34:19 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	remove_all_list(t_list **list)
 	while (cur != NULL)
 	{
 		next = cur->next;
-		_free((void **)cur->data);
+		_free((void **)&cur->data);
 		_free((void **)&cur);
 		cur = next;
 	}

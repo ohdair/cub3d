@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaewpark <jaewpark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 20:39:18 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 16:28:00 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/07/04 20:39:07 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	init_game_struct(t_game *g)
 	int	i;
 
 	i = -1;
-	while (++i < MAX_IMAGE)
+	while (++i < MAX_DIR)
 	{
 		g->wall[i].img = NULL;
 		g->wall[i].path = NULL;

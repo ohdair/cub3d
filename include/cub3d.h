@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 11:25:16 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/04 19:41:47 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/09 14:18:18 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 # define CUB3D_H
 
 # include <stdbool.h>
-# include <math.h>
 # include "util.h"
 
 # define WIDTH	960
 # define HEIGHT	640
 # define WALLSIZE 64
+# define MOVE_UNIT 0.2
+# define ROTATE_UNIT 0.1
 
 enum e_error
 {
@@ -31,13 +32,13 @@ enum e_error
 	STATUS_MAX
 };
 
-enum e_image
+enum e_dir
 {
 	NO = 0,
 	SO,
 	WE,
 	EA,
-	MAX_IMAGE
+	MAX_DIR
 };
 
 enum e_background_color
@@ -73,8 +74,8 @@ struct s_texture
 
 typedef struct s_point
 {
-	double	x;
 	double	y;
+	double	x;
 }			t_point;
 
 struct s_background
@@ -127,7 +128,7 @@ typedef struct s_game
 	int					bpp;
 	int					line_l;
 	int					end;
-	struct s_image		wall[MAX_IMAGE];
+	struct s_image		wall[MAX_DIR];
 	struct s_background	background[MAX_BACKGROUND_COLOR];
 	struct s_map		map;
 	struct s_ray		ray;
@@ -149,6 +150,7 @@ void	pixel_put(t_game *game, int x, int y, int color);
 */
 int		key_press(int key, t_game *g);
 int		mouse_hook(t_game *g);
+void	move(int key, t_game *g);
 
 /*
 ** init
@@ -160,7 +162,7 @@ void	init_mlx(t_game *g);
 ** parse
 */
 bool	set_background(t_game *g, char *data);
-bool	check_map(const char **map, int height, int width);
+bool	check_map(struct s_map *map);
 bool	set_image(t_game *g, char *data);
 void	set_map(struct s_map *map, t_list *list);
 void	parse(t_game *g, const char *file_name);

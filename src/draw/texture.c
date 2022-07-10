@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jaewpark <jaewpark@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 13:21:15 by jaewpark          #+#    #+#             */
-/*   Updated: 2022/07/04 19:09:03 by jaewpark         ###   ########.fr       */
+/*   Updated: 2022/07/09 14:16:10 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <math.h>
 #include "cub3d.h"
 #include "mlx.h"
 

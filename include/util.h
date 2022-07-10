@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 18:25:32 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/02 16:02:50 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/04 20:53:58 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void		*_calloc(size_t count, size_t size);
 void		_free(void **target);
 void		_free_double_pointer(void ***target);
 char		*get_next_line(int fd);
+int			_isspace(int c);
+int			_allisspace(char *s);
 t_list		*create_list(void *data);
 t_list		*get_last_list(t_list *list);
 void		add_list_back(t_list **list, t_list *new);

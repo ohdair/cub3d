@@ -6,7 +6,7 @@
 /*   By: juhur <juhur@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 18:16:38 by juhur             #+#    #+#             */
-/*   Updated: 2022/07/03 12:54:08 by juhur            ###   ########.fr       */
+/*   Updated: 2022/07/04 20:51:01 by juhur            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	list_skip(t_list **list)
 {
-	while (_strlen((*list)->data) == 0)
+	while (_allisspace((*list)->data))
 		*list = (*list)->next;
 }
 
